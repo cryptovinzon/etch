@@ -3,19 +3,24 @@ newGrid.addEventListener('click', loadGrid);
 
 function loadGrid(){
     let cellSize = prompt('How many squares per side?');
-    removeGrid();
-    resize(cellSize);
-    for (let i=0; i < cellSize; i++){
-        for (let j=0; j < cellSize; j++) {
-        const container = document.querySelector('#container')
-        const box = document.createElement('div')
+    if (cellSize > 100){
+        alert('That\'s too big! Enter a smaller amount (max: 100)')
+        loadGrid();
+        } else {
+        removeGrid();
+        resize(cellSize);
+        for (let i=0; i < cellSize; i++){
+            for (let j=0; j < cellSize; j++) {
+            const container = document.querySelector('#container')
+            const box = document.createElement('div')
 
-        box.classList.add('box'); // add css class .box
-        container.appendChild(box);
+            box.classList.add('box'); // add css class .box
+            container.appendChild(box);
+            }
         }
+        const hoverBox = document.querySelectorAll('.box');
+        hoverBox.forEach(hoverBox => hoverBox.addEventListener('mouseover', highlight));
     }
-    const hoverBox = document.querySelectorAll('.box');
-    hoverBox.forEach(hoverBox => hoverBox.addEventListener('mouseover', highlight));
 }
 
 function highlight(e) {
