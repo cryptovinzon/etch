@@ -1,8 +1,5 @@
-
 const newGrid = document.querySelector('#grid');
 newGrid.addEventListener('click', loadGrid);
-
-//window.onload = loadGrid;
 
 function loadGrid(){
     let cellSize = prompt('How many squares per side?');
@@ -22,7 +19,8 @@ function loadGrid(){
 }
 
 function highlight(e) {
-    this.classList.add('hover');
+    let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // random hex color code
+    e.target.style.backgroundColor = `${randomColor}`;
 }
 
 function resize(cells) {
